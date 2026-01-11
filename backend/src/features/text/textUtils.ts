@@ -57,6 +57,10 @@ class TextUtils {
         }
         return line;
     }
+
+    public countWords(text: string): number {
+        return text.trim().split(/\s+/).filter(word => word.length > 0).length;
+    }
 }
 
 export const textUtils = new TextUtils();
