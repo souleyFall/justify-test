@@ -10,7 +10,8 @@ class TextController {
             return;
         }
         const justifiedText: Text = textUtils.justifyText(textData);
-        res.status(200).send(justifiedText);
+        res.setHeader("Content-Type", "text/plain");
+        res.send(justifiedText);
     } 
 }
 
