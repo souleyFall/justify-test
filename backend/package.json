@@ -2,10 +2,10 @@
   "name": "justify-test",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "dev": "nodemon --exec ts-node index.ts",
-    "start": "node index.js",
+    "start": "node dist/index.js",
     "build": "tsc",
     "test": "jest",
     "test:coverage": "jest --coverage"
