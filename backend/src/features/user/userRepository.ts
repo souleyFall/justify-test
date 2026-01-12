@@ -2,7 +2,7 @@ import path from "node:path";
 import { DataStore, DataStoreSchema } from "../user/userTypes";
 import fs from 'fs';
 
-class TokenRepository {
+class UserRepository {
     private DATA_FILE = path.join(__dirname, 'data.json');
     
     public loadData(): DataStore {
@@ -28,4 +28,4 @@ class TokenRepository {
     }
 }
 
-export const tokenRepository = new TokenRepository();
+export const userRepository = new UserRepository();

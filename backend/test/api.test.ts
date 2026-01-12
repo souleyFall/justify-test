@@ -19,7 +19,7 @@ describe('Test justify API', () => {
     it('Test génération token avec email déjà enregistré', async () => {
         const response = await request(app)
             .post('/api/token')
-            .send({ email: 'test@test.com' });
+            .send({ email: 'foo@bar.com' });
 
         expect(response.status).toBe(200);
         expect(response.body.token).toBeDefined();

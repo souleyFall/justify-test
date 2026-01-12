@@ -1,4 +1,5 @@
-import { tokenUtils, tokenRepository } from "../features/token";
+import { tokenUtils } from "../features/token";
+import { userRepository } from "../features/user";
 import { Request, Response, NextFunction } from 'express';
 
 export function authMiddleware(req :Request, res :Response, next :NextFunction) :void {
@@ -8,7 +9,7 @@ export function authMiddleware(req :Request, res :Response, next :NextFunction) 
         return;
     }
     const token = authHeader.substring(7);
-    const data = tokenRepository.loadData();
+    const data = userRepository.loadData();
     const userData = data.users[token];
 
     if (!userData) {
@@ -20,7 +21,7 @@ export function authMiddleware(req :Request, res :Response, next :NextFunction) 
     if(userData.lastResetDate !== today){
         userData.wordCount = 0;
         userData.lastResetDate = today;
-        tokenRepository.saveData(data);
+        userRepository.saveData(data);
     }
 
     (req as any).user = userData;
