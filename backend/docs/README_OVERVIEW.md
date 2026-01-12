@@ -1,4 +1,4 @@
-# Justify API - Vue d'ensemble pour Senior Developer
+# Justify API - Vue d'ensemble rapide
 
 ## TL;DR
 
