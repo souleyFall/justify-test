@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { TokenRequest, TokenRequestSchema } from "./tokenTypes";
-import { tokenRepository } from "./tokenRepository";
+import { userRepository } from "../user";
 import { tokenUtils } from "./tokenUtils";
 import z from "zod";
 
@@ -8,7 +8,7 @@ class TokenController {
     public generateToken(req : Request, res : Response) : void {
         try {
             const { email } = TokenRequestSchema.parse(req.body);
-            const data = tokenRepository.loadData();
+            const data = userRepository.loadData();
 
             // Vérifier si l'utilisateur existe déjà
             let existingToken: string | null = null;
@@ -32,7 +32,7 @@ class TokenController {
                 lastResetDate: tokenUtils.getTodayDate()
             };
             data.users[token] = userData;
-            tokenRepository.saveData(data);
+            userRepository.saveData(data);
             res.json({ token });
         }catch (error) {
             if(error instanceof z.ZodError){

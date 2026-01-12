@@ -1,7 +1,7 @@
 import { Text } from "./textTypes";
 import { Request, Response } from "express";
 import { textUtils } from "./textUtils";
-import { tokenRepository } from "../token";
+import { userRepository } from "../user";
 
 class TextController {
     public justify(req : Request, res : Response) : void {
@@ -24,7 +24,7 @@ class TextController {
 
         UserData.wordCount += wordCount;
         dataStore.users[UserData.token] = UserData;
-        tokenRepository.saveData(dataStore);
+        userRepository.saveData(dataStore);
 
         const justifiedText: Text = textUtils.justifyText(textData);
         res.setHeader("Content-Type", "text/plain");
